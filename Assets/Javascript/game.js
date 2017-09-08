@@ -36,7 +36,6 @@ document.onkeypress = function(evt) {
 
    for (var i = 0; i < gameWord.length; i++){
      if (gameWord[i] == charStr){
-    var i = gameWord.indexOf(charStr);
   wordArray[i] = (charStr);
   }
 }
@@ -52,7 +51,7 @@ document.onkeypress = function(evt) {
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
-  // if (guessRemain == 0) {alert("Game Over");
+  
 }
  
 
