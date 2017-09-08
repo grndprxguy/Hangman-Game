@@ -24,19 +24,17 @@ document.onkeypress = function(evt) {
     var charStr = String.fromCharCode(charCode);
     charStr = charStr.toUpperCase();
     charsTyped.push(charStr);
-    var tryCount = function(){tryCount++};
+   // document.getElementById("letterGuessed").innerHTML=charsTyped; 
     
   if (gameWord.includes(charStr) == true) {
   	correctGuess.push(charStr);
-  }
-  // checking results
-  console.log(charsTyped);
-  console.log(correctGuess);
-  console.log("-----");
+  	document.getElementById("correctLetter").innerHTML=correctGuess;
+  };
+}
+ 
 
- }
-
-  document.getElementById("divtry").innerHTML=(tryCount);
+ 
+  
 
 
 
