@@ -17,6 +17,13 @@ for (var i = 0; i < gameWord.length; i++){
 	wordArray[i] = "_ ";
 }
 
+var reset = function(){
+  guessRemain: 15
+  tryCount: 0
+  charsTyped:
+  correctGuess:
+  wordArray:
+}
 
 // check keypress against gameWord
 document.onkeypress = function(evt) {
@@ -27,23 +34,17 @@ document.onkeypress = function(evt) {
     // add charStr to CharsTyped array
     charsTyped.push(charStr);
     
-    console.log(gameWord);
-    
     // add correct letters to correctGuess array
-  if (gameWord.includes(charStr) == true) {
-  	correctGuess.push(charStr);
+    if (gameWord.includes(charStr) == true) {
+    	correctGuess.push(charStr);
+    }
+    for (var i = 0; i < gameWord.length; i++){
+       if (gameWord[i] == charStr){
+    wordArray[i] = (charStr);
+    }
   }
 
-   for (var i = 0; i < gameWord.length; i++){
-     if (gameWord[i] == charStr){
-  wordArray[i] = (charStr);
-  }
-}
-
-  
-
-
-  // increment try count, show current status
+// increment try count, show current status
   tryCount++;
   guessRemain--;
   document.getElementById("correctLetter").innerHTML=correctGuess;
@@ -51,8 +52,16 @@ document.onkeypress = function(evt) {
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
-  
+  if (tryCount == 15) {
+    wins++
+    alert("Game Over");
+    reset;
+    gameWord
+  }
 }
+
+  
+
  
 
  
