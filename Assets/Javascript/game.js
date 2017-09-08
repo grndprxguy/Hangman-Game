@@ -14,7 +14,7 @@ for (var i = 0; i < gameWord.length; i++){
 	wordArray[i] = "_ ";
 }
 
-
+var tryCount = 0;
 var charsTyped = [];
 var correctGuess = [];
 // check keypress against gameWord
@@ -26,7 +26,6 @@ document.onkeypress = function(evt) {
     charsTyped.push(charStr);
     var tryCount = function(){tryCount++};
     
-
   if (gameWord.includes(charStr) == true) {
   	correctGuess.push(charStr);
   }
@@ -35,9 +34,9 @@ document.onkeypress = function(evt) {
   console.log(correctGuess);
   console.log("-----");
 
-  var tryCount = 0;}
+ }
 
-  document.getElementByID("divtry").innerHTML=tryCount;
+  document.getElementById("divtry").innerHTML=(tryCount);
 
 
 
