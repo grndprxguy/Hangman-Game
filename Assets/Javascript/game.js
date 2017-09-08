@@ -26,16 +26,21 @@ document.onkeypress = function(evt) {
     charStr = charStr.toUpperCase();
     // add charStr to CharsTyped array
     charsTyped.push(charStr);
-    var j = gameWord.indexOf(charStr);
+    
     console.log(gameWord);
     
     // add correct letters to correctGuess array
   if (gameWord.includes(charStr) == true) {
   	correctGuess.push(charStr);
+  }
+
    for (var i = 0; i < gameWord.length; i++){
-  wordArray[j] = (charStr);
+     if (gameWord[i] == charStr){
+    var i = gameWord.indexOf(charStr);
+  wordArray[i] = (charStr);
   }
 }
+
   
 
 
