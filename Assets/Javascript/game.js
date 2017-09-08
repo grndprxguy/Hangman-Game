@@ -26,23 +26,29 @@ document.onkeypress = function(evt) {
     charStr = charStr.toUpperCase();
     // add charStr to CharsTyped array
     charsTyped.push(charStr);
+    var j = gameWord.indexOf(charStr);
+    console.log(gameWord);
     
     // add correct letters to correctGuess array
   if (gameWord.includes(charStr) == true) {
   	correctGuess.push(charStr);
-  	document.getElementById("correctLetter").innerHTML=correctGuess;
-  };
+   for (var i = 0; i < gameWord.length; i++){
+  wordArray[j] = (charStr);
+  }
+}
+  
+
+
   // increment try count, show current status
   tryCount++;
   guessRemain--;
+  document.getElementById("correctLetter").innerHTML=correctGuess;
   document.getElementById("numTry").innerHTML=tryCount;
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
-  if (guessRemain == 0) {alert("Game Over");
-  }
+  // if (guessRemain == 0) {alert("Game Over");
 }
-
  
 
  
