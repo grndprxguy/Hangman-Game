@@ -24,12 +24,18 @@ document.onkeypress = function(evt) {
     var charStr = String.fromCharCode(charCode);
     charStr = charStr.toUpperCase();
     charsTyped.push(charStr);
+
+
    // document.getElementById("letterGuessed").innerHTML=charsTyped; 
     
   if (gameWord.includes(charStr) == true) {
   	correctGuess.push(charStr);
   	document.getElementById("correctLetter").innerHTML=correctGuess;
   };
+  tryCount++;
+  document.getElementById("numTry").innerHTML=tryCount;
+  document.getElementById("letterGuess").innerHTML=charsTyped;
+
 }
  
 
