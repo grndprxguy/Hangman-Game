@@ -18,22 +18,16 @@ for (var i = 0; i < gameWord.length; i++){
 
 // reset game stats
 var reset = function(){
+  var wordArray = undefined;
+  var gameWord = undefined;
+  var gameWord = words[Math.floor(Math.random() * words.length)];
+  var wordArray = (gameWord.length);
   guessRemain=15;
   tryCount=0;
   charsTyped=[];
   correctGuess=[];
-  wordArray = [];
-  var gameWord = words[Math.floor(Math.random() * words.length)];
-  var wordArray = gameWord.length;
-  for (var i = 0; i < gameWord.length; i++){
-  wordArray[i] = "_ ";
-  };
-  document.getElementById("correctLetter").innerHTML=correctGuess;
-  document.getElementById("numTry").innerHTML=tryCount;
-  document.getElementById("tryLeft").innerHTML=guessRemain;
-  document.getElementById("letterGuess").innerHTML=charsTyped;
-  document.getElementById("wordArray").innerHTML=wordArray;
 }
+
 
 // check keypress against gameWord
 document.onkeypress = function(evt) {
@@ -41,9 +35,14 @@ document.onkeypress = function(evt) {
     var charCode = evt.keyCode || evt.which;
     var charStr = String.fromCharCode(charCode);
     charStr = charStr.toUpperCase();
+
+      // if letter already has been guessed, skip
+     if (charsTyped.includes(charStr)){
+      return
+      }
     // add charStr to CharsTyped array
     charsTyped.push(charStr);
-    
+  
     // add correct letters to correctGuess array
     if (gameWord.includes(charStr) == true) {
     	correctGuess.push(charStr);
