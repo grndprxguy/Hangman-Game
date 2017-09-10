@@ -1,6 +1,3 @@
-// word bank
-var words =["ACADIA","BADLANDS","DENALI","EVERGLADES","GLACIER","OLYMPIC","PINNACLES","REDWOOD","YELLOWSTONE","YOSEMITE","ZION"]
-
 // set variables
 var wins = 0;
 var guessRemain = 15;
@@ -8,6 +5,8 @@ var tryCount = 0;
 var charsTyped = [];
 var correctGuess = [];
 
+// word bank
+var words =["ACADIA","BADLANDS","DENALI","EVERGLADES","GLACIER","OLYMPIC","PINNACLES","REDWOOD","YELLOWSTONE","YOSEMITE","ZION"]
 // pick a word from the word bank
 var gameWord = words[Math.floor(Math.random() * words.length)];
 // Set Array from gameWord
@@ -15,14 +14,25 @@ var wordArray = new Array(gameWord.length);
 // Set _ for letter in wordArray
 for (var i = 0; i < gameWord.length; i++){
 	wordArray[i] = "_ ";
-}
+  };
 
+// reset game stats
 var reset = function(){
-  guessRemain: 15
-  tryCount: 0
-  charsTyped:
-  correctGuess:
-  wordArray:
+  guessRemain=15;
+  tryCount=0;
+  charsTyped=[];
+  correctGuess=[];
+  wordArray = [];
+  var gameWord = words[Math.floor(Math.random() * words.length)];
+  var wordArray = gameWord.length;
+  for (var i = 0; i < gameWord.length; i++){
+  wordArray[i] = "_ ";
+  };
+  document.getElementById("correctLetter").innerHTML=correctGuess;
+  document.getElementById("numTry").innerHTML=tryCount;
+  document.getElementById("tryLeft").innerHTML=guessRemain;
+  document.getElementById("letterGuess").innerHTML=charsTyped;
+  document.getElementById("wordArray").innerHTML=wordArray;
 }
 
 // check keypress against gameWord
@@ -44,6 +54,7 @@ document.onkeypress = function(evt) {
     }
   }
 
+
 // increment try count, show current status
   tryCount++;
   guessRemain--;
@@ -52,13 +63,21 @@ document.onkeypress = function(evt) {
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
+  document.getElementById("winCount").innerHTML=wins;
   if (tryCount == 15) {
-    wins++
-    alert("Game Over");
-    reset;
-    gameWord
+    alert("You Lose!");
+    reset();
+  }
+
+
+if (!wordArray.includes("_ ")) {
+  wins++;
+  alert("You Win!");
+  reset();
   }
 }
+
+
 
   
 
