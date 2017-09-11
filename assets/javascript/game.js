@@ -1,6 +1,6 @@
 // set variables
 var wins = 0;
-var guessRemain = 10;
+var guessRemain = 15;
 var tryCount = 0;
 var charsTyped = [];
 var correctGuess = [];
@@ -21,7 +21,7 @@ function reset(){
   wordArray = [];
   gameWord = words[Math.floor(Math.random() * words.length)];
   wordArray = new Array(gameWord.length);
-  guessRemain=10;
+  guessRemain=15;
   tryCount=0;
   charsTyped=[];
   correctGuess=[];
@@ -46,13 +46,13 @@ document.onkeypress = function(evt) {
     charStr = charStr.toUpperCase();
       // if letter already has been guessed, skip
      if (charsTyped.includes(charStr)){
-      return
+    return
       }
     // add charStr to CharsTyped array
-    charsTyped.push(charStr + " ");
+    charsTyped.push(charStr);
     // add correct letters to correctGuess array
     if (gameWord.includes(charStr) == true) {
-    	correctGuess.push(charStr + " ");
+    	correctGuess.push(charStr);
     }
     for (var i = 0; i < gameWord.length; i++){
        if (gameWord[i] == charStr){
@@ -81,7 +81,7 @@ setTimeout (function gameOver() {
 
 // losing condition
 setTimeout (function noWin() {
-    if (tryCount == 10) {
+    if (tryCount == 15) {
     lose.play();
     document.getElementById("anyKey").innerHTML="Try Again!"
     reset();
