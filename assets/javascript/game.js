@@ -1,7 +1,6 @@
 // set variables
 var wins = 0;
-var guessRemain = 15;
-var tryCount = 0;
+var guessRemain = 10;
 var charsTyped = [];
 var correctGuess = [];
 
@@ -21,8 +20,7 @@ function reset(){
   wordArray = [];
   gameWord = words[Math.floor(Math.random() * words.length)];
   wordArray = new Array(gameWord.length);
-  guessRemain=15;
-  tryCount=0;
+  guessRemain=10;
   charsTyped=[];
   correctGuess=[];
   for (var i = 0; i < gameWord.length; i++){
@@ -31,7 +29,6 @@ function reset(){
 
   // show reset counters
   document.getElementById("correctLetter").innerHTML=correctGuess;
-  document.getElementById("numTry").innerHTML=tryCount;
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
@@ -62,10 +59,8 @@ document.onkeypress = function(evt) {
 
 // increment try count, show current counters
 if (!gameWord.includes(charStr)){
-  tryCount++;
   guessRemain--;}
   document.getElementById("correctLetter").innerHTML=correctGuess;
-  document.getElementById("numTry").innerHTML=tryCount;
   document.getElementById("tryLeft").innerHTML=guessRemain;
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
@@ -82,12 +77,12 @@ setTimeout (function gameOver() {
 
 // losing condition
 setTimeout (function noWin() {
-    if (tryCount == 15) {
+    if (guessRemain < 1) {
     lose.play();
     document.getElementById("anyKey").innerHTML="Try Again!"
     reset();
   }
-}, 1800);
+}, 500);
 
 // winning conditions
     setTimeout (function youWin() {
