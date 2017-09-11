@@ -60,6 +60,8 @@ document.onkeypress = function(evt) {
   }
 
 // increment try count, show current counters
+if (!charStr.match(letters)){
+  document.getElementById("anyKey").innerHTML="Please press a letter"}
 if (!gameWord.includes(charStr) && charStr.match(letters)){
   guessRemain--;}
   document.getElementById("correctLetter").innerHTML=correctGuess;
