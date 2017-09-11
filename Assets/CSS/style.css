@@ -1,0 +1,13 @@
+.container {
+	margin: 0 auto;
+	background-color: #1f4b93;
+}
+
+body {
+	color: white;
+}
+
+#wordArray {
+	font-size: 40px;
+	font-style: strong;
+}

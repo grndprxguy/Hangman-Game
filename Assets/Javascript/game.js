@@ -1,6 +1,6 @@
 // set variables
 var wins = 0;
-var guessRemain = 15;
+var guessRemain = 10;
 var tryCount = 0;
 var charsTyped = [];
 var correctGuess = [];
@@ -17,15 +17,23 @@ for (var i = 0; i < gameWord.length; i++){
   };
 
 // reset game stats
-var reset = function(){
-  var wordArray = undefined;
-  var gameWord = undefined;
-  var gameWord = words[Math.floor(Math.random() * words.length)];
-  var wordArray = (gameWord.length);
-  guessRemain=15;
+function reset(){
+  wordArray = [];
+  gameWord = words[Math.floor(Math.random() * words.length)];
+  wordArray = new Array(gameWord.length);
+  guessRemain=10;
   tryCount=0;
   charsTyped=[];
   correctGuess=[];
+  for (var i = 0; i < gameWord.length; i++){
+  wordArray[i] = "_ ";
+  };
+  document.getElementById("correctLetter").innerHTML=correctGuess;
+  document.getElementById("numTry").innerHTML=tryCount;
+  document.getElementById("tryLeft").innerHTML=guessRemain;
+  document.getElementById("letterGuess").innerHTML=charsTyped;
+  document.getElementById("wordArray").innerHTML=wordArray;
+  document.getElementById("winCount").innerHTML=wins;
 }
 
 
@@ -63,17 +71,18 @@ document.onkeypress = function(evt) {
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
   document.getElementById("winCount").innerHTML=wins;
-  if (tryCount == 15) {
+  if (tryCount == 10) {
     alert("You Lose!");
     reset();
   }
 
 
-if (!wordArray.includes("_ ")) {
-  wins++;
-  alert("You Win!");
-  reset();
-  }
+  if (!wordArray.includes("_ ")) {
+    reset();
+    alert("You Win!");
+    wins++;
+    
+    }
 }
 
 
