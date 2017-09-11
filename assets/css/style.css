@@ -2,23 +2,32 @@
 	margin: 100px auto;
 	background-color: #665AE4;
 	padding: 50px;
-	text-align: center;	
+	text-align: center;
 }
 
-h1 {
+.header {
 	color: #94C595;
-	font-size: 60px;
+	font-size: 100px;
+	font-weight: bolder;
+}
+
+p {
+	font-size: 40px;
+	color: white;
+}
+body {
+	background-image: url("https://www.nps.gov/common/uploads/grid_builder/imr/crop16_9/DA3C1F02-1DD8-B71B-0BEA9E07D90D38B8.jpg");
+	font-size: 40px;
+}
+
+#score {font-size: 40px;
+	color: white;
 }
 
 #anyKey {
 	color: #E56399;
 	font-weight: bolder;
-}
-
-body {
-	color: white;
-	background-color: #222A68;
-	font-size: 35px;
+	font-size: 30px;
 }
 
 #wordArray {
