@@ -28,6 +28,8 @@ function reset(){
   for (var i = 0; i < gameWord.length; i++){
   wordArray[i] = "_ ";
   };
+
+  // show reset counters
   document.getElementById("correctLetter").innerHTML=correctGuess;
   document.getElementById("numTry").innerHTML=tryCount;
   document.getElementById("tryLeft").innerHTML=guessRemain;
@@ -36,24 +38,21 @@ function reset(){
   document.getElementById("winCount").innerHTML=wins;
 }
 
-
 // check keypress against gameWord
 document.onkeypress = function(evt) {
     evt = evt || window.event;
     var charCode = evt.keyCode || evt.which;
     var charStr = String.fromCharCode(charCode);
     charStr = charStr.toUpperCase();
-
       // if letter already has been guessed, skip
      if (charsTyped.includes(charStr)){
       return
       }
     // add charStr to CharsTyped array
-    charsTyped.push(charStr);
-  
+    charsTyped.push(charStr + " ");
     // add correct letters to correctGuess array
     if (gameWord.includes(charStr) == true) {
-    	correctGuess.push(charStr);
+    	correctGuess.push(charStr + " ");
     }
     for (var i = 0; i < gameWord.length; i++){
        if (gameWord[i] == charStr){
@@ -61,8 +60,7 @@ document.onkeypress = function(evt) {
     }
   }
 
-
-// increment try count, show current status
+// increment try count, show current counters
   tryCount++;
   guessRemain--;
   document.getElementById("correctLetter").innerHTML=correctGuess;
@@ -71,18 +69,34 @@ document.onkeypress = function(evt) {
   document.getElementById("letterGuess").innerHTML=charsTyped;
   document.getElementById("wordArray").innerHTML=wordArray;
   document.getElementById("winCount").innerHTML=wins;
-  if (tryCount == 10) {
-    alert("You Lose!");
+  
+
+// game over condition
+setTimeout (function gameOver() {
+  if (wins==10) {
+  document.getElementById("anyKey").innerHTML="You Win! Game Over!"
+  reload();
+  }
+}, 1800);
+
+// losing condition
+setTimeout (function noWin() {
+    if (tryCount == 10) {
+    lose.play();
+    document.getElementById("anyKey").innerHTML="Try Again!"
     reset();
   }
+}, 1800);
 
-
-  if (!wordArray.includes("_ ")) {
+// winning conditions
+    setTimeout (function youWin() {
+    if (!wordArray.includes("_ ")) {
+    win.play();
+    document.getElementById("anyKey").innerHTML="You Win!"
     reset();
-    alert("You Win!");
     wins++;
-    
     }
+  },1500);
 }
 
 
