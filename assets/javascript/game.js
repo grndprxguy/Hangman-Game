@@ -61,8 +61,9 @@ document.onkeypress = function(evt) {
   }
 
 // increment try count, show current counters
+if (!gameWord.includes(charStr)){
   tryCount++;
-  guessRemain--;
+  guessRemain--;}
   document.getElementById("correctLetter").innerHTML=correctGuess;
   document.getElementById("numTry").innerHTML=tryCount;
   document.getElementById("tryLeft").innerHTML=guessRemain;
