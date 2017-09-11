@@ -1,11 +1,12 @@
 // set variables
 var wins = 0;
-var guessRemain = 10;
+var guessRemain = 8;
 var charsTyped = [];
 var correctGuess = [];
+var letters = /^[A-Za-z]+$/; 
 
 // word bank
-var words =["ACADIA","BADLANDS","DENALI","EVERGLADES","GLACIER","OLYMPIC","PINNACLES","REDWOOD","YELLOWSTONE","YOSEMITE","ZION"]
+var words =["ARCHES","ACADIA","BADLANDS","BISCAYNE","BRYCE","CANYONLANDS","CARLSBAD CAVERNS","CHANNEL ISLANDS","CONGAREE","CRATER LAKE","DENALI","EVERGLADES","GLACIER","OLYMPIC","PINNACLES","REDWOOD","YELLOWSTONE","YOSEMITE","ZION"]
 // pick a word from the word bank
 var gameWord = words[Math.floor(Math.random() * words.length)];
 // Set Array from gameWord
@@ -20,7 +21,7 @@ function reset(){
   wordArray = [];
   gameWord = words[Math.floor(Math.random() * words.length)];
   wordArray = new Array(gameWord.length);
-  guessRemain=10;
+  guessRemain=8;
   charsTyped=[];
   correctGuess=[];
   for (var i = 0; i < gameWord.length; i++){
@@ -46,9 +47,10 @@ document.onkeypress = function(evt) {
     return
       }
     // add charStr to CharsTyped array
-    charsTyped.push(charStr);
+    if(charStr.match(letters)){
+    charsTyped.push(charStr);}
     // add correct letters to correctGuess array
-    if (gameWord.includes(charStr) == true) {
+    if (gameWord.includes(charStr)) {
     	correctGuess.push(charStr);
     }
     for (var i = 0; i < gameWord.length; i++){
@@ -58,7 +60,7 @@ document.onkeypress = function(evt) {
   }
 
 // increment try count, show current counters
-if (!gameWord.includes(charStr)){
+if (!gameWord.includes(charStr) && charStr.match(letters)){
   guessRemain--;}
   document.getElementById("correctLetter").innerHTML=correctGuess;
   document.getElementById("tryLeft").innerHTML=guessRemain;
