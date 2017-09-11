@@ -1,6 +1,7 @@
 .container {
 	margin: 100px auto;
 	background-color: #665AE4;
+	opacity: .85;
 	padding: 50px;
 	text-align: center;
 }
